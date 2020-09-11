@@ -49,11 +49,3 @@ State.Wait 0 0 0 0
 State.Move 0 0 1 1 
 State.Start 0 1 0 1 
 State.Done 1 0 0 1 
-
-State Machine - |fake_mario_top|state_machine:sm_instance|State
-Name State.Write1 State.Read1 State.Write0 State.Start State.Read0 
-State.Start 0 0 0 0 0 
-State.Write0 0 0 1 1 0 
-State.Read1 0 1 0 1 0 
-State.Write1 1 0 0 1 0 
-State.Read0 0 0 0 1 1 

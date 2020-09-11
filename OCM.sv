@@ -170,25 +170,3 @@ end
 
 endmodule
 
-
-/*module frame_buffer(
-	input Clk,
-	input WE, RE,
-	input [18:0] address,
-    input [3:0] data_In,
-    output [3:0] data_Out
-);
-
-// mem has width of 5 bits and a total of 307200 addresses
-logic [3:0] buffer [0:307200-1];
-
-always_ff @ (posedge Clk) begin
-	if (RE)
-		data_Out <= buffer[address];
-	else
-		data_Out <= 4'h0;
-	if (WE)
-		buffer[address] <= data_In;
-end
-
-endmodule*/

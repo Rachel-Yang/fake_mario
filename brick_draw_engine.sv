@@ -261,7 +261,7 @@ end
 /*draw start info*/
 logic [3:0] start_info;
 
-startinfo death_instance(
+startinfo start_instance(
     .DrawX, .DrawY, .color_idx(start_info)
 );
 

@@ -139,17 +139,8 @@ color2ROM color2_mapper (
 	.color_vector({VGA_R2, VGA_G2, VGA_B2})
 );
 
-/* State Machine */
-logic [1:0] we, re;
-state_machine sm_instance(
-	// input
-	.Clk, .Reset(Reset_h),
-	.DrawX, .DrawY,
-	// output write and read control
-	.we, .re
-);
-
 /* temp index and pos info */
+logic [3:0] color_idx;
 logic [31:0] softctl;
 logic [1:0] bg_index;
 logic [2:0] mario_index, level_idx;
@@ -183,23 +174,6 @@ draw_engine draw_engine_instance(
 	.color_idx, .spine_x,
 	.Reset(reset_game)
 );
-
-/**
- * Frame Buffer
-**/
-logic [18:0] buffer_address;
-logic [3:0] buffer_input, buffer_output, color_idx;
-
-assign buffer_address = DrawY * 19'd640 + DrawX;
-//assign buffer_input = color_idx;
-
-/*buffer_select select_instance(
-	.Clk, 
-	.we, .re,
-	.address(buffer_address),
-	.data_In(buffer_input),
-	.data_Out(buffer_output)
-);*/
 
 assign HEX_DEBUG = {20'd0, Reset_h, trigger, spine_x};
 
