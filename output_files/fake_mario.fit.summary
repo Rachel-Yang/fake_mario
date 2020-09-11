@@ -1,0 +1,16 @@
+Fitter Status : Successful - Thu Sep 10 12:51:18 2020
+Quartus Prime Version : 18.1.0 Build 625 09/12/2018 SJ Lite Edition
+Revision Name : fake_mario
+Top-level Entity Name : fake_mario_top
+Family : Cyclone IV E
+Device : EP4CE115F29C7
+Timing Models : Final
+Total logic elements : 9,589 / 114,480 ( 8 % )
+    Total combinational functions : 8,895 / 114,480 ( 8 % )
+    Dedicated logic registers : 2,437 / 114,480 ( 2 % )
+Total registers : 2556
+Total pins : 257 / 529 ( 49 % )
+Total virtual pins : 0
+Total memory bits : 3,467,680 / 3,981,312 ( 87 % )
+Embedded Multiplier 9-bit elements : 0 / 532 ( 0 % )
+Total PLLs : 3 / 4 ( 75 % )

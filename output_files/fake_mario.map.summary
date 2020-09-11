@@ -1,0 +1,14 @@
+Analysis & Synthesis Status : Successful - Thu Sep 10 12:49:45 2020
+Quartus Prime Version : 18.1.0 Build 625 09/12/2018 SJ Lite Edition
+Revision Name : fake_mario
+Top-level Entity Name : fake_mario_top
+Family : Cyclone IV E
+Total logic elements : 9,925
+    Total combinational functions : 8,880
+    Dedicated logic registers : 2,498
+Total registers : 2498
+Total pins : 257
+Total virtual pins : 0
+Total memory bits : 3,467,680
+Embedded Multiplier 9-bit elements : 0
+Total PLLs : 3

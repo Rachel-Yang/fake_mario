@@ -1,0 +1,475 @@
+module startinfo(
+    input [9:0] DrawX, DrawY,
+    output [3:0] color_idx
+);
+
+logic [2:0]shape_on;
+logic [5:0]variable;
+logic [10:0] shape_x;
+
+logic [10:0] shape_I_x  = 61;
+
+logic [10:0] shape_W_x  = 125;
+logic [10:0] shape_A_x  = 167;
+logic [10:0] shape_N_x = 209;
+logic [10:0] shape_N2_x  = 251;
+logic [10:0] shape_A2_x  = 293;
+
+logic [10:0] shape_B_x = 357;
+logic [10:0] shape_E_x  = 399;
+
+logic [10:0] shape_T_x  = 463;
+logic [10:0] shape_H_x = 505;
+logic [10:0] shape_E2_x = 547;
+
+logic [10:0] shape_y1   = 52;
+
+
+logic [10:0] shape_F_x  = 60;
+logic [10:0] shape_A3_x = 102;
+logic [10:0] shape_K_x = 144;
+logic [10:0] shape_E3_x  = 186;
+
+logic [10:0] shape_M_x = 270;
+logic [10:0] shape_A4_x  = 333;
+logic [10:0] shape_R_x = 396;
+logic [10:0] shape_I2_x = 459;
+logic [10:0] shape_O_x = 522;
+
+logic [10:0] shape_y2   = 120;
+
+
+logic [10:0] shape_P_x  = 60;
+logic [10:0] shape_R2_x = 88;
+logic [10:0] shape_E4_x = 116;
+logic [10:0] shape_S_x  = 144;
+logic [10:0] shape_S2_x = 172;
+
+logic [10:0] shape_E5_x = 216;
+logic [10:0] shape_N3_x = 244;
+logic [10:0] shape_T2_x = 272;
+logic [10:0] shape_E6_x = 300;
+logic [10:0] shape_R3_x = 328;
+
+logic [10:0] shape_T3_x  = 372;
+logic [10:0] shape_O2_x = 400;
+
+logic [10:0] shape_S3_x = 444;
+logic [10:0] shape_T4_x = 472;
+logic [10:0] shape_A5_x = 500;
+logic [10:0] shape_R4_x = 528;
+logic [10:0] shape_T5_x  = 556;
+
+logic [10:0] shape_y3   = 240;
+
+
+logic [10:0] big_x      = 48;
+logic [10:0] big_y      = 64;
+
+logic [10:0] middle_x   = 32;
+logic [10:0] middle_y   = 48;
+
+logic [10:0] small_x    = 24;
+logic [10:0] small_y    = 32;
+
+logic [10:0] sprite_addr;
+logic [7:0] sprite_data;
+
+font_rom font_instance (.addr(sprite_addr), .data(sprite_data));
+
+always_comb
+begin
+    //I x49
+    if (DrawX >= shape_I_x && DrawX < shape_I_x + middle_x &&
+        DrawY >= shape_y1 && DrawY < shape_y1 + middle_y)
+    begin
+        shape_on = 3'b001;
+        variable = 6'd0;
+        sprite_addr = ((DrawY - shape_y1)/'d3 + 16*'h49);
+    end 
+
+    //W x57
+    else if (DrawX >= shape_W_x && DrawX < shape_W_x + middle_x &&
+        DrawY >= shape_y1 && DrawY < shape_y1 + middle_y)
+    begin
+        shape_on = 3'b001;
+        variable = 6'd1;
+        sprite_addr = ((DrawY - shape_y1)/'d3 + 16*'h57);
+    end 
+    //A x41
+    else if (DrawX >= shape_A_x && DrawX < shape_A_x + middle_x &&
+        DrawY >= shape_y1 && DrawY < shape_y1 + middle_y)
+    begin
+        shape_on = 3'b001;
+        variable = 6'd2;
+        sprite_addr = ((DrawY - shape_y1)/'d3 + 16*'h41);
+    end
+    //N x4e
+    else if (DrawX >= shape_N_x && DrawX < shape_N_x + middle_x &&
+        DrawY >= shape_y1 && DrawY < shape_y1 + middle_y)
+    begin
+        shape_on = 3'b001;
+        variable = 6'd3;
+        sprite_addr = ((DrawY - shape_y1)/'d3 + 16*'h4e);
+    end
+    //N2 x4e
+    else if (DrawX >= shape_N2_x && DrawX < shape_N2_x + middle_x &&
+        DrawY >= shape_y1 && DrawY < shape_y1 + middle_y)
+    begin
+        shape_on = 3'b001;
+        variable = 6'd4;
+        sprite_addr = ((DrawY - shape_y1)/'d3 + 16*'h4e);
+    end
+    //A2 x41
+    else if (DrawX >= shape_A2_x && DrawX < shape_A2_x + middle_x &&
+        DrawY >= shape_y1 && DrawY < shape_y1 + middle_y)
+    begin
+        shape_on = 3'b001;
+        variable = 6'd5;
+        sprite_addr = ((DrawY - shape_y1)/'d3 + 16*'h41);
+    end
+
+    //B x42
+    else if (DrawX >= shape_B_x && DrawX < shape_B_x + middle_x &&
+        DrawY >= shape_y1 && DrawY < shape_y1 + middle_y)
+    begin
+        shape_on = 3'b001;
+        variable = 6'd6;
+        sprite_addr = ((DrawY - shape_y1)/'d3 + 16*'h42);
+    end
+    //E x45
+    else if (DrawX >= shape_E_x && DrawX < shape_E_x + middle_x &&
+        DrawY >= shape_y1 && DrawY < shape_y1 + middle_y)
+    begin
+        shape_on = 3'b001;
+        variable = 6'd7;
+        sprite_addr = ((DrawY - shape_y1)/'d3 + 16*'h45);
+    end
+
+    //T x54
+    else if (DrawX >= shape_T_x && DrawX < shape_T_x + middle_x &&
+        DrawY >= shape_y1 && DrawY < shape_y1 + middle_y)
+    begin
+        shape_on = 3'b001;
+        variable = 6'd8;
+        sprite_addr = ((DrawY - shape_y1)/'d3 + 16*'h54);
+    end
+    //H x48
+    else if (DrawX >= shape_H_x && DrawX < shape_H_x + middle_x &&
+        DrawY >= shape_y1 && DrawY < shape_y1 + middle_y)
+    begin
+        shape_on = 3'b001;
+        variable = 6'd9;
+        sprite_addr = ((DrawY - shape_y1)/'d3 + 16*'h48);
+    end
+    //E2 x45
+    else if (DrawX >= shape_E2_x && DrawX < shape_E2_x + middle_x &&
+        DrawY >= shape_y1 && DrawY < shape_y1 + middle_y)
+    begin
+        shape_on = 3'b001;
+        variable = 6'd10;
+        sprite_addr = ((DrawY - shape_y1)/'d3 + 16*'h45);
+    end
+
+    //F x46
+    else if (DrawX >= shape_F_x && DrawX < shape_F_x + middle_x &&
+        DrawY >= shape_y2 && DrawY < shape_y2 + middle_y)
+    begin
+        shape_on = 3'b001;
+        variable = 6'd11;
+        sprite_addr = ((DrawY - shape_y2)/'d3 + 16*'h46);
+    end
+    //A3 x41
+    else if (DrawX >= shape_A3_x && DrawX < shape_A3_x + middle_x &&
+        DrawY >= shape_y2 && DrawY < shape_y2 + middle_y)
+    begin
+        shape_on = 3'b001;
+        variable = 6'd12;
+        sprite_addr = ((DrawY - shape_y2)/'d3 + 16*'h41);
+    end
+    //K x4b
+    else if (DrawX >= shape_K_x && DrawX < shape_K_x + middle_x &&
+        DrawY >= shape_y2 && DrawY < shape_y2 + middle_y)
+    begin
+        shape_on = 3'b001;
+        variable = 6'd13;
+        sprite_addr = ((DrawY - shape_y2)/'d3 + 16*'h4b);
+    end
+    //E3 x45
+    else if (DrawX >= shape_E3_x && DrawX < shape_E3_x + middle_x &&
+        DrawY >= shape_y2 && DrawY < shape_y2 + middle_y)
+    begin
+        shape_on = 3'b001;
+        variable = 6'd14;
+        sprite_addr = ((DrawY - shape_y2)/'d3 + 16*'h45);
+    end
+
+    //M x4d
+    else if (DrawX >= shape_M_x && DrawX < shape_M_x + big_x &&
+        DrawY >= shape_y2 && DrawY < shape_y2 + big_y)
+    begin
+        shape_on = 3'b010;
+        variable = 6'd15;
+        sprite_addr = ((DrawY - shape_y2)/'d4 + 16*'h4d);
+    end  
+    //A4 x41
+    else if (DrawX >= shape_A4_x && DrawX < shape_A4_x + big_x &&
+        DrawY >= shape_y2 && DrawY < shape_y2 + big_y)
+    begin
+        shape_on = 3'b010;
+        variable = 6'd16;
+        sprite_addr = ((DrawY - shape_y2)/'d4 + 16*'h41);
+    end
+    //R x52
+    else if (DrawX >= shape_R_x && DrawX < shape_R_x + big_x &&
+        DrawY >= shape_y2 && DrawY < shape_y2 + big_y)
+    begin
+        shape_on = 3'b010;
+        variable = 6'd17;
+        sprite_addr = ((DrawY - shape_y2)/'d4 + 16*'h52);
+    end
+    //I2 x49
+    else if (DrawX >= shape_I2_x && DrawX < shape_I2_x + big_x &&
+        DrawY >= shape_y2 && DrawY < shape_y2 + big_y)
+    begin
+        shape_on = 3'b010;
+        variable = 6'd18;
+        sprite_addr = ((DrawY - shape_y2)/'d4 + 16*'h49);
+    end
+    //O x4f
+    else if (DrawX >= shape_O_x && DrawX < shape_O_x + big_x &&
+        DrawY >= shape_y2 && DrawY < shape_y2 + big_y)
+    begin
+        shape_on = 3'b010;
+        variable = 6'd19;
+        sprite_addr = ((DrawY - shape_y2)/'d4 + 16*'h4f);
+    end
+
+
+    //P x50
+    else if (DrawX >= shape_P_x && DrawX < shape_P_x + small_x &&
+        DrawY >= shape_y3 && DrawY < shape_y3 + small_y)
+    begin
+        shape_on = 3'b011;
+        variable = 6'd20;
+        sprite_addr = ((DrawY - shape_y3)/'d2 + 16*'h50);
+    end
+    //R2 x52
+    else if (DrawX >= shape_R2_x && DrawX < shape_R2_x + small_x &&
+        DrawY >= shape_y3 && DrawY < shape_y3 + small_y)
+    begin
+        shape_on = 3'b011;
+        variable = 6'd21;
+        sprite_addr = ((DrawY - shape_y3)/'d2 + 16*'h52);
+    end
+    //E4 x45
+    else if (DrawX >= shape_E4_x && DrawX < shape_E4_x + small_x &&
+        DrawY >= shape_y3 && DrawY < shape_y3 + small_y)
+    begin
+        shape_on = 3'b011;
+        variable = 6'd22;
+        sprite_addr = ((DrawY - shape_y3)/'d2 + 16*'h45);
+    end
+    //S x53
+    else if (DrawX >= shape_S_x && DrawX < shape_S_x + small_x &&
+        DrawY >= shape_y3 && DrawY < shape_y3 + small_y)
+    begin
+        shape_on = 3'b011;
+        variable = 6'd23;
+        sprite_addr = ((DrawY - shape_y3)/'d2 + 16*'h53);
+    end
+    //S2 x53
+    else if (DrawX >= shape_S2_x && DrawX < shape_S2_x + small_x &&
+        DrawY >= shape_y3 && DrawY < shape_y3 + small_y)
+    begin
+        shape_on = 3'b011;
+        variable = 6'd24;
+        sprite_addr = ((DrawY - shape_y3)/'d2 + 16*'h53);
+    end
+
+    //E5 x45
+    else if (DrawX >= shape_E5_x && DrawX < shape_E5_x + small_x &&
+        DrawY >= shape_y3 && DrawY < shape_y3 + small_y)
+    begin
+        shape_on = 3'b100;
+        variable = 6'd25;
+        sprite_addr = ((DrawY - shape_y3)/'d2 + 16*'h45);
+    end 
+    //N3 x4e
+    else if (DrawX >= shape_N3_x && DrawX < shape_N3_x + small_x &&
+        DrawY >= shape_y3 && DrawY < shape_y3 + small_y)
+    begin
+        shape_on = 3'b100;
+        variable = 6'd26;
+        sprite_addr = ((DrawY - shape_y3)/'d2 + 16*'h4e);
+    end
+    //T2 x54
+    else if (DrawX >= shape_T2_x && DrawX < shape_T2_x + small_x &&
+        DrawY >= shape_y3 && DrawY < shape_y3 + small_y)
+    begin
+        shape_on = 3'b100;
+        variable = 6'd27;
+        sprite_addr = ((DrawY - shape_y3)/'d2 + 16*'h54);
+    end
+    //E6 x45
+    else if (DrawX >= shape_E6_x && DrawX < shape_E6_x + small_x &&
+        DrawY >= shape_y3 && DrawY < shape_y3 + small_y)
+    begin
+        shape_on = 3'b100;
+        variable = 6'd28;
+        sprite_addr = ((DrawY - shape_y3)/'d2 + 16*'h45);
+    end 
+    //R3 x52
+    else if (DrawX >= shape_R3_x && DrawX < shape_R3_x + small_x &&
+        DrawY >= shape_y3 && DrawY < shape_y3 + small_y)
+    begin
+        shape_on = 3'b100;
+        variable = 6'd29;
+        sprite_addr = ((DrawY - shape_y3)/'d2 + 16*'h52);
+    end 
+
+    //T3 x54
+    else if (DrawX >= shape_T3_x && DrawX < shape_T3_x + small_x &&
+        DrawY >= shape_y3 && DrawY < shape_y3 + small_y)
+    begin
+        shape_on = 3'b011;
+        variable = 6'd30;
+        sprite_addr = ((DrawY - shape_y2)/'d2 + 16*'h54);
+    end
+    //O2 x4f
+    else if (DrawX >= shape_O2_x && DrawX < shape_O2_x + small_x &&
+        DrawY >= shape_y3 && DrawY < shape_y3 + small_y)
+    begin
+        shape_on = 3'b011;
+        variable = 6'd31;
+        sprite_addr = ((DrawY - shape_y2)/'d2 + 16*'h4f);
+    end
+
+    //S3 x53
+    else if (DrawX >= shape_S3_x && DrawX < shape_S3_x + small_x &&
+        DrawY >= shape_y3 && DrawY < shape_y3 + small_y)
+    begin
+        shape_on = 3'b011;
+        variable = 6'd32;
+        sprite_addr = ((DrawY - shape_y2)/'d2 + 16*'h53);
+    end
+    //T4 x54
+    else if (DrawX >= shape_T4_x && DrawX < shape_T4_x + small_x &&
+        DrawY >= shape_y3 && DrawY < shape_y3 + small_y)
+    begin
+        shape_on = 3'b011;
+        variable = 6'd33;
+        sprite_addr = ((DrawY - shape_y2)/'d2 + 16*'h54);
+    end
+    //A5 x41
+    else if (DrawX >= shape_A5_x && DrawX < shape_A5_x + small_x &&
+        DrawY >= shape_y3 && DrawY < shape_y3 + small_y)
+    begin
+        shape_on = 3'b011;
+        variable = 6'd34;
+        sprite_addr = ((DrawY - shape_y2)/'d2 + 16*'h41);
+    end
+    //R4 x52
+    else if (DrawX >= shape_R4_x && DrawX < shape_R4_x + small_x &&
+        DrawY >= shape_y3 && DrawY < shape_y3 + small_y)
+    begin
+        shape_on = 3'b011;
+        variable = 6'd35;
+        sprite_addr = ((DrawY - shape_y2)/'d2 + 16*'h52);
+    end
+    //T5 x54
+    else if (DrawX >= shape_T5_x && DrawX < shape_T5_x + small_x &&
+        DrawY >= shape_y3 && DrawY < shape_y3 + small_y)
+    begin
+        shape_on = 3'b011;
+        variable = 6'd36;
+        sprite_addr = ((DrawY - shape_y2)/'d2 + 16*'h54);
+    end
+
+    else
+    begin
+        shape_on = 3'b000;
+		variable = 6'd0;
+        sprite_addr = 10'b0;
+    end  
+end
+
+
+always_comb
+begin
+    shape_x = 0;
+    unique case(variable)
+        6'd0: shape_x = shape_I_x;
+
+        6'd1: shape_x = shape_W_x;
+        6'd2: shape_x = shape_A_x;
+        6'd3: shape_x = shape_N_x;
+        6'd4: shape_x = shape_N2_x;
+        6'd5: shape_x = shape_A2_x;
+
+        6'd6: shape_x = shape_B_x;
+        6'd7: shape_x = shape_E_x;
+
+        6'd8: shape_x = shape_T_x;
+        6'd9: shape_x = shape_H_x;
+        6'd10: shape_x = shape_E2_x;
+
+        6'd11: shape_x = shape_F_x;
+        6'd12: shape_x = shape_A3_x;
+        6'd13: shape_x = shape_K_x;
+        6'd14: shape_x = shape_E3_x;
+
+        6'd15: shape_x = shape_M_x;
+        6'd16: shape_x = shape_A4_x;
+        6'd17: shape_x = shape_R_x;
+        6'd18: shape_x = shape_I2_x;
+        6'd19: shape_x = shape_O_x;
+
+        6'd20: shape_x = shape_P_x;
+        6'd21: shape_x = shape_R2_x;
+        6'd22: shape_x = shape_E4_x;
+        6'd23: shape_x = shape_S_x;
+        6'd24: shape_x = shape_S2_x;
+
+        6'd25: shape_x = shape_E5_x;
+        6'd26: shape_x = shape_N3_x;
+        6'd27: shape_x = shape_T2_x;
+        6'd28: shape_x = shape_E6_x;
+        6'd29: shape_x = shape_R3_x;
+
+        6'd30: shape_x = shape_T3_x;
+        6'd31: shape_x = shape_O2_x;
+
+        6'd32: shape_x = shape_S3_x;
+        6'd33: shape_x = shape_T4_x;
+        6'd34: shape_x = shape_A5_x;
+        6'd35: shape_x = shape_R4_x;
+        6'd36: shape_x = shape_T5_x;
+        default: ;
+    endcase
+end
+
+always_comb
+begin
+    /*I WANNA BE THE FAKE*/
+    if ((shape_on == 3'b001) && sprite_data[(11'd31-(DrawX - shape_x))/'d4] == 1'b1)
+        color_idx = 4'd9; //white
+    /*MARIO*/
+    else if ((shape_on == 3'b010) && sprite_data[(11'd47-(DrawX - shape_x))/'d6] == 1'b1)
+        color_idx = 4'd9 ; //white
+    /*PRESS ... TO START*/
+    else if ((shape_on ==3'b011 ) && sprite_data[(11'd23-(DrawX - shape_x))/'d3] == 1'b1)
+        color_idx = 4'd9; //white
+    /*ENTER*/
+    else if ((shape_on ==3'b100 ) && sprite_data[(11'd23-(DrawX - shape_x))/'d3] == 1'b1)
+        color_idx = 4'd14; //yellow
+
+    else if (DrawX >= 10'd60 && DrawX < 10'd580 && 
+             DrawY >= 10'd210 && DrawY < 10'd214 &&
+             (DrawX - 10'd60) % 10'd15 <= 10'd10 )
+        color_idx = 4'd9; //white
+    else
+        color_idx = 0;
+end
+
+endmodule;

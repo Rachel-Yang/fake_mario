@@ -1,0 +1,47 @@
+ /**/
+
+module  backgorundROM
+(
+		input [18:0] read_address,
+		input Clk,
+		output logic [2:0] data_Out
+);
+
+// mem has width of 3 bits and a total of 400 addresses
+logic [2:0] mem [0:307199];
+
+initial
+begin
+	 $readmemh("import_files/background.txt", mem);
+end
+
+always_ff @ (posedge Clk) begin
+	data_Out<= mem[read_address];
+end
+
+endmodule
+
+
+
+module  colorROM
+(
+		input [2:0] read_address,
+		input Clk,
+		output logic [7:0] VGA_R, VGA_G, VGA_B
+);
+
+// mem has width of 3 bits and a total of 400 addresses
+logic [23:0] mem [0:7];
+
+initial
+begin
+	 $readmemh("import_files/background_color.txt", mem);
+end
+
+always_ff @ (posedge Clk) begin
+	VGA_R <= (mem[read_address] & 0xFF0000) >> 16;
+    VGA_G <= (mem[read_address] & 0x00FF00) >> 8;
+    VGA_B <= (mem[read_address] & 0xFF0000);
+end
+
+endmodule

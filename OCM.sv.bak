@@ -1,0 +1,46 @@
+module  colorROM
+(
+	input [3:0] read_address,
+	input Clk,
+	output logic [23:0] color_vector
+);
+
+logic [23:0] mem [0:7];
+
+initial
+begin
+	 $readmemh("import_files/color.txt", mem);
+end
+
+always_ff @ (posedge Clk) begin
+	color_vector <= mem[read_address];
+end
+
+endmodule
+
+
+module frame_buffer(
+	input Clk,
+    input [3:0] data_In,
+    input [18:0] write_address, read_address,
+    input [1:0] we, re,
+    output logic [3:0] data_Out
+);
+
+// mem has width of 5 bits and a total of 307200 addresses
+logic [4:0] buffer0 [0:307200-1];
+logic [4:0] buffer1 [0:307200-1];
+
+always_ff @ (posedge Clk) begin
+	if (re[1])
+		data_Out <= buffer1[read_address];
+	if (re[0])
+		data_Out <= buffer0[read_address];
+
+	if (we[1])
+		buffer1[write_address] <= data_In;
+	if (we[0])
+		buffer0[write_address] <= data_In;
+end
+
+endmodule

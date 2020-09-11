@@ -1,0 +1,88 @@
+module spine_move(
+    input logic Clk,
+    input logic trigger,
+    input [9:0] spine_x
+);
+
+int BRICK = 20;
+
+enum logic [4:0] {Start,
+                  S1, S2, S3, S4, S5, S6, S7, S8, S9, S10, S11,
+                  S12,S13,S14,S15,S16,S17,S18,S19,S20,S21, S22,
+                  Wait} State, Next_State;
+
+always_ff @ (posedge Clk)
+begin
+    if (trigger)
+        State <= Start;
+    else 
+        State <= Next_State;
+end
+
+always_comb
+begin
+    // Default next state is staying at current state
+    Next_state = State;
+
+    //Assign next state
+    unique case(State)
+        Start:  Next_State = S1;
+        S1:     Next_State = S2;
+        S2:     Next_State = S3;
+        S3:     Next_State = S4;
+        S4:     Next_State = S5;
+        S5:     Next_State = S6;
+        S6:     Next_State = S7;
+        S7:     Next_State = S8;
+        S8:     Next_State = S9;
+        S9:     Next_State = S10;
+        S10:    Next_State = S11;
+        S11:    Next_State = S12;
+        S12:    Next_State = S13;
+        S13:    Next_State = S14;
+        S14:    Next_State = S15;
+        S15:    Next_State = S16;
+        S16:    Next_State = S17;
+        S17:    Next_State = S18;
+        S18:    Next_State = S19;
+        S19:    Next_State = S20;
+        S20:    Next_State = S21;
+        S21:    Next_State = S22;
+        S22:    Next_State = Wait; 
+        Wait:   if (trigger) Next_State = Start;
+
+        default: ;
+    endcase
+
+    //Default spine_x
+    spine_x = 10'd0;
+
+    case(State)
+        Start:  spine_x = 1*BRICK;
+        S1:  spine_x = 2*BRICK;
+        S2:  spine_x = 3*BRICK;
+        S3:  spine_x = 4*BRICK;
+        S4:  spine_x = 5*BRICK;
+        S5:  spine_x = 6*BRICK;
+        S6:  spine_x = 7*BRICK;
+        S7:  spine_x = 8*BRICK;
+        S8:  spine_x = 9*BRICK;
+        S9:  spine_x = 10*BRICK;
+        S10:  spine_x = 11*BRICK;
+        S11:  spine_x = 12*BRICK;
+        S12:  spine_x = 13*BRICK;
+        S13:  spine_x = 14*BRICK;
+        S14:  spine_x = 15*BRICK;
+        S15:  spine_x = 16*BRICK;
+        S16:  spine_x = 17*BRICK;
+        S17:  spine_x = 18*BRICK;
+        S18:  spine_x = 19*BRICK;
+        S19:  spine_x = 20*BRICK;
+        S20:  spine_x = 21*BRICK;
+        S21:  spine_x = 22*BRICK;
+        S22:  spine_x = 23*BRICK;
+        default: ;
+    endcase
+end
+
+endmodule

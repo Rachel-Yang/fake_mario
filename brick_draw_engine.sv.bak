@@ -1,0 +1,57 @@
+module level1_draw_engine(
+    input logic Clk,
+    output [19:0] SRAM_ADDR,
+    input [15:0] SRAM_DATA;
+
+    input [9:0] DrawX, DrawY,
+    input [1:0] bg_index, 
+    output [3:0] color_idx
+);
+
+logic [20:0] bg_offset;
+int BRICK_X = 32;
+int BRICK_Y = 32;
+
+//select background
+always_comb
+begin
+    bg_offset = 20'd0;
+
+    unique case (bg_index)
+        2'd0: bg_offset = 20'd0;
+        2'd1: bg_offset = 20'd0;
+	    default : ;
+    endcase
+
+    SRAM_ADDR = bg_offset + DrawY * 20'd640 + DrawX;
+end
+
+logic [12:0] brick_address = 0;
+
+/*draw brick*/
+brick_groundROM brick_ground_instance( 
+    .read_address(brick_address), .Clk,
+    .color_idx(brick_color)
+);
+
+//get brick address
+brick_address = (DrawY >> 5) * BRICK_X + (DrawX >> 5);
+
+always_ff @ (posedge Clk) 
+begin
+    color_idx <= SRAM_DATA[3:0];
+
+    /*check if there is a brick*/
+    if ((DrawX < 10'd128 && DrawY >= 10'd352) ||
+        (DrawX < 10'd320 && DrawX >= 10'd128 && DrawY >= 10'd416) ||
+        (DrawX < 10'd480 && DrawX >= 10'd384 && DrawY >= 10'd416) ||
+        (DrawX < 10'd544 && DrawX >= 10'd480 && DrawY >= 10'd384) ||
+        (DrawX >= 10'd544 && DrawY >= 10'd320))
+
+        color_idx <=  brick_color;
+end
+
+
+
+
+endmodule;

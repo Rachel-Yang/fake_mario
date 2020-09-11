@@ -1,0 +1,63 @@
+#include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
+#include <io.h>
+#include <fcntl.h>
+
+#include "system.h"
+#include "alt_types.h"
+#include <unistd.h>  // usleep
+#include "sys/alt_irq.h"
+
+#include "keyboard/keyboard_util.h"
+#include "screen_init.h"
+
+
+int main()
+{
+    volatile unsigned int *GPIO = (unsigned int*)0x60;
+    volatile unsigned int *LEDG_PIO = (unsigned int*)0x100;
+    
+    *LEDG_PIO = 0x0;
+    *LEDG_PIO = 0x3;
+    keyboard_init();
+    *GPIO = 0x0;
+    *GPIO |= 350 & MARIO_POS_Y_MASK;
+    *GPIO |= 30 & MARIO_POS_X_MASK;
+    *GPIO |= 0   & MARIO_IDX_MASK;
+    *GPIO |= 0     & BG_IDX_MASK;
+    //draw_screen(0, 0, 30, 350, GPIO);
+    while(1){
+        int keycode;
+
+        keycode = get_keycode();
+
+    }
+
+        
+        
+        
+
+    /*//Unit Test 1: test keyboard
+    keyboard_init();
+    while(1)
+        printf("keycode is:%d\n", get_keycode());
+    */
+   
+    /*//Unit Test 0: test key, leds, sw
+	volatile unsigned int *LEDR_PIO = (unsigned int*)0xE0; //make a pointer to access the PIO block
+    volatile unsigned int *LEDG_PIO = (unsigned int*)0xF0;
+    volatile unsigned int *KEY_PIO = (unsigned int*)0xD0;
+    volatile unsigned int *SW_PIO = (unsigned int*)0x100;
+
+    *LEDR_PIO = 0; //clear all LEDRs
+    *LEDG_PIO = 0; //clear all LEDGs
+
+    while ( (1+1) != 3) //infinite loop
+    {
+        *LEDR_PIO = *SW_PIO;
+        *LEDG_PIO = *KEY_PIO & (0x0F);
+    }*/
+	return 0; //never gets here
+
+}

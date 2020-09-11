@@ -1,0 +1,29 @@
+#include "keyboard/keyboard_init.h"
+#include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
+#include <io.h>
+#include <fcntl.h>
+
+int main()
+{
+	printf("main\n");
+    keyboard_init();
+
+    /* Unit Test 0: test key, leds, sw
+	volatile unsigned int *LEDR_PIO = (unsigned int*)0x70; //make a pointer to access the PIO block
+    volatile unsigned int *LEDG_PIO = (unsigned int*)0x80;
+    volatile unsigned int *KEY_PIO = (unsigned int*)0x60;
+    volatile unsigned int *SW_PIO = (unsigned int*)0x90;
+
+    *LEDR_PIO = 0; //clear all LEDRs
+    *LEDG_PIO = 0; //clear all LEDGs
+
+    while ( (1+1) != 3) //infinite loop
+    {
+        *LEDR_PIO = *SW_PIO;
+        *LEDG_PIO = *KEY_PIO & (0x0F);
+    }
+	return 1; //never gets here
+    */
+}
